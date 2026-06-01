@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright The WildFly Authors
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.wildfly.tck</groupId>
+        <artifactId>wildfly-jakarta-ee-tck-runners-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>transactions-tck-parent</artifactId>
+    <name>WildFly Jakarta Transactions TCK Parent</name>
+    <description>Runs the Jakarta Transactions TCK</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <version.jakarta.transaction.tck>${version.jakarta.transaction.short}</version.jakarta.transaction.tck>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>standalone-transactions-tck</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <modules>
+                <module>transactions-tck-setup</module>
+                <module>transactions-tck-runner</module>
+            </modules>
+        </profile>
+    </profiles>
+
+</project>
