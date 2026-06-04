@@ -1,0 +1,956 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< org.wildfly.tck:transactions-tck-runner >---------------
+[INFO] Building WildFly Jakarta Transactions TCK Runner 1.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.4.0:clean (default-clean) @ transactions-tck-runner ---
+[INFO] Deleting /Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner/target
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ transactions-tck-runner ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.BannedRepositories passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ transactions-tck-runner ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- buildnumber:3.2.1:create (get-scm-revision) @ transactions-tck-runner ---
+[INFO] Executing: /bin/sh -c cd '/Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'
+[INFO] Working directory: /Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner
+[INFO] Storing buildNumber: 16f3ab962b631d738587db5603ed043f288ddbcf at timestamp: 1780588776682
+[INFO] Executing: /bin/sh -c cd '/Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner' && 'git' 'symbolic-ref' 'HEAD'
+[INFO] Working directory: /Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner
+[INFO] Storing scmBranch: transactions-tck-runner
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ transactions-tck-runner ---
+[INFO] skip non existing resourceDirectory /Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner/src/main/resources
+[INFO] 
+[INFO] --- dependency:3.8.1:copy-dependencies (copy-transactions-tck) @ transactions-tck-runner ---
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ transactions-tck-runner ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 3 source files with javac [debug deprecation release 17] to target/classes
+[INFO] Writing META-INF/services/org.jboss.arquillian.core.spi.LoadableExtension
+[INFO] 
+[INFO] --- wildfly:5.1.4.Final:provision (server-provisioning) @ transactions-tck-runner ---
+[INFO] Resolving channel metadata from Maven artifact org.wildfly.channels:wildfly-preview:40.0.0.Final
+WARNING: Final field logicalVersion in class org.wildfly.channel.ChannelManifest has been mutated reflectively by class com.fasterxml.jackson.databind.deser.impl.FieldProperty in unnamed module @4be1c797 (file:/Users/aidenzhang/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.2/jackson-databind-2.18.2.jar)
+WARNING: Use --enable-final-field-mutation=ALL-UNNAMED to avoid a warning
+WARNING: Mutating final fields will be blocked in a future release unless final field mutation is enabled
+[INFO] Provisioning server in /Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner/target/wildfly
+[INFO] Resolving feature-packs
+[INFO] Installing packages
+[INFO] 611 of 654 (93.4%)
+[INFO] Resolving artifacts
+[INFO] Generating configurations
+[INFO] Delayed generation, waiting...
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ transactions-tck-runner ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ transactions-tck-runner ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug deprecation release 17] to target/test-classes
+[INFO] 
+[INFO] --- antrun:3.1.0:run (add-derby-module) @ transactions-tck-runner ---
+[INFO] Executing tasks
+[INFO]      [copy] Copying 1 file to /Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner/target/wildfly/modules/org/apache/derby/main
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- antrun:3.1.0:run (configure-test-classpath) @ transactions-tck-runner ---
+[INFO] Executing tasks
+[INFO]      [copy] Copying 1 file to /Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner/target
+[INFO]      [copy] Copying 2 files to /Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner/target/sql
+[INFO]      [copy] Copying 2 files to /Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner/target/test-classes/sql
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- dependency:3.8.1:copy (copy-derby-module-artifacts) @ transactions-tck-runner ---
+[INFO] Configured Artifact: org.apache.derby:derby:10.16.1.1:jar
+[INFO] Configured Artifact: org.apache.derby:derbyclient:10.16.1.1:jar
+Downloading from jboss-public-repository-group: https://repository.jboss.org/nexus/content/groups/public/org/apache/derby/derbyclient/10.16.1.1/derbyclient-10.16.1.1.pom
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/derby/derbyclient/10.16.1.1/derbyclient-10.16.1.1.pom
+Progress (1): 834 BProgress (1): 2.0 kBProgress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/derby/derbyclient/10.16.1.1/derbyclient-10.16.1.1.pom (2.5 kB at 19 kB/s)
+Downloading from jboss-public-repository-group: https://repository.jboss.org/nexus/content/groups/public/org/apache/derby/derbyclient/10.16.1.1/derbyclient-10.16.1.1.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/derby/derbyclient/10.16.1.1/derbyclient-10.16.1.1.jar
+Progress (1): 0.9/604 kBProgress (1): 2.3/604 kBProgress (1): 3.6/604 kBProgress (1): 5.0/604 kBProgress (1): 6.4/604 kBProgress (1): 7.7/604 kBProgress (1): 9.1/604 kBProgress (1): 10/604 kB Progress (1): 12/604 kBProgress (1): 13/604 kBProgress (1): 15/604 kBProgress (1): 16/604 kBProgress (1): 17/604 kBProgress (1): 19/604 kBProgress (1): 20/604 kBProgress (1): 21/604 kBProgress (1): 23/604 kBProgress (1): 24/604 kBProgress (1): 26/604 kBProgress (1): 27/604 kBProgress (1): 28/604 kBProgress (1): 30/604 kBProgress (1): 31/604 kBProgress (1): 32/604 kBProgress (1): 34/604 kBProgress (1): 35/604 kBProgress (1): 36/604 kBProgress (1): 38/604 kBProgress (1): 39/604 kBProgress (1): 41/604 kBProgress (1): 42/604 kBProgress (1): 43/604 kBProgress (1): 45/604 kBProgress (1): 46/604 kBProgress (1): 47/604 kBProgress (1): 49/604 kBProgress (1): 50/604 kBProgress (1): 52/604 kBProgress (1): 56/604 kBProgress (1): 60/604 kBProgress (1): 64/604 kBProgress (1): 68/604 kBProgress (1): 73/604 kBProgress (1): 77/604 kBProgress (1): 81/604 kBProgress (1): 85/604 kBProgress (1): 90/604 kBProgress (1): 94/604 kBProgress (1): 98/604 kBProgress (1): 102/604 kBProgress (1): 107/604 kBProgress (1): 111/604 kBProgress (1): 115/604 kBProgress (1): 119/604 kBProgress (1): 122/604 kBProgress (1): 127/604 kBProgress (1): 131/604 kBProgress (1): 131/604 kBProgress (1): 135/604 kBProgress (1): 140/604 kBProgress (1): 144/604 kBProgress (1): 148/604 kBProgress (1): 152/604 kBProgress (1): 156/604 kBProgress (1): 161/604 kBProgress (1): 165/604 kBProgress (1): 169/604 kBProgress (1): 173/604 kBProgress (1): 178/604 kBProgress (1): 182/604 kBProgress (1): 186/604 kBProgress (1): 190/604 kBProgress (1): 195/604 kBProgress (1): 199/604 kBProgress (1): 203/604 kBProgress (1): 207/604 kBProgress (1): 211/604 kBProgress (1): 216/604 kBProgress (1): 232/604 kBProgress (1): 248/604 kBProgress (1): 262/604 kBProgress (1): 279/604 kBProgress (1): 295/604 kBProgress (1): 311/604 kBProgress (1): 328/604 kBProgress (1): 344/604 kBProgress (1): 360/604 kBProgress (1): 377/604 kBProgress (1): 393/604 kBProgress (1): 410/604 kBProgress (1): 426/604 kBProgress (1): 442/604 kBProgress (1): 459/604 kBProgress (1): 475/604 kBProgress (1): 492/604 kBProgress (1): 508/604 kBProgress (1): 524/604 kBProgress (1): 541/604 kBProgress (1): 557/604 kBProgress (1): 573/604 kBProgress (1): 590/604 kBProgress (1): 604 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/derby/derbyclient/10.16.1.1/derbyclient-10.16.1.1.jar (604 kB at 5.2 MB/s)
+[INFO] Configured Artifact: org.apache.derby:derbyshared:10.16.1.1:jar
+[INFO] Configured Artifact: org.apache.derby:derbytools:10.16.1.1:jar
+[INFO] 
+[INFO] --- resources:3.3.1:copy-resources (copy-cli-scripts) @ transactions-tck-runner ---
+[INFO] Copying 1 resource from src/test/resources to target/wildfly/standalone/configuration
+[INFO] 
+[INFO] --- surefire:3.5.2:test (default-test) @ transactions-tck-runner ---
+[WARNING]  Parameter 'systemProperties' is deprecated: Use systemPropertyVariables instead.
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- surefire:3.5.2:test (transactions-tck) @ transactions-tck-runner ---
+[WARNING]  Parameter 'systemProperties' is deprecated: Use systemPropertyVariables instead.
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.sun.ts.tests.jta.ee.transactional.ClientEjblitejsfTest
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.jboss.threads.JBossExecutors (file:/Users/aidenzhang/.m2/repository/org/jboss/threads/jboss-threads/2.4.0.Final/jboss-threads-2.4.0.Final.jar)
+WARNING: Please consider reporting this to the maintainers of class org.jboss.threads.JBossExecutors
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.465 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.transactional.ClientEjblitejsfTest
+[ERROR] com.sun.ts.tests.jta.ee.transactional.ClientEjblitejsfTest -- Time elapsed: 6.465 s <<< ERROR!
+java.lang.RuntimeException: Database initialization failed
+	at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+	at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+	at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+	at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+	at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+	at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+	at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+	at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+	... 16 more
+
+[INFO] Running com.sun.ts.tests.jta.ee.transactional.ClientEjblitejspTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.transactional.ClientEjblitejspTest
+[ERROR] com.sun.ts.tests.jta.ee.transactional.ClientEjblitejspTest -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.transactional.ClientEjbliteservlet2Test
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.transactional.ClientEjbliteservlet2Test
+[ERROR] com.sun.ts.tests.jta.ee.transactional.ClientEjbliteservlet2Test -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.transactional.ClientEjbliteservletTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.transactional.ClientEjbliteservletTest
+[ERROR] com.sun.ts.tests.jta.ee.transactional.ClientEjbliteservletTest -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.txpropagationtest.ClientJspTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.txpropagationtest.ClientJspTest
+[ERROR] com.sun.ts.tests.jta.ee.txpropagationtest.ClientJspTest -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.txpropagationtest.ClientServletTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.txpropagationtest.ClientServletTest
+[ERROR] com.sun.ts.tests.jta.ee.txpropagationtest.ClientServletTest -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.begin.UserBeginClientJspTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.begin.UserBeginClientJspTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.begin.UserBeginClientJspTest -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.begin.UserBeginClientServletTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.begin.UserBeginClientServletTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.begin.UserBeginClientServletTest -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.commit.UserCommitClientJspTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.commit.UserCommitClientJspTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.commit.UserCommitClientJspTest -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.commit.UserCommitClientServletTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.commit.UserCommitClientServletTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.commit.UserCommitClientServletTest -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.getstatus.UserGetStatusClientJspTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.getstatus.UserGetStatusClientJspTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.getstatus.UserGetStatusClientJspTest -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.getstatus.UserGetStatusClientServletTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.getstatus.UserGetStatusClientServletTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.getstatus.UserGetStatusClientServletTest -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.rollback.UserRollbackClientJspTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.rollback.UserRollbackClientJspTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.rollback.UserRollbackClientJspTest -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.rollback.UserRollbackClientServletTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.rollback.UserRollbackClientServletTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.rollback.UserRollbackClientServletTest -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.setrollbackonly.UserSetRollbackOnlyClientJspTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.setrollbackonly.UserSetRollbackOnlyClientJspTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.setrollbackonly.UserSetRollbackOnlyClientJspTest -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.setrollbackonly.UserSetRollbackOnlyClientServletTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.setrollbackonly.UserSetRollbackOnlyClientServletTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.setrollbackonly.UserSetRollbackOnlyClientServletTest -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.settransactiontimeout.UserSetTransactionTimeoutClientJspTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.settransactiontimeout.UserSetTransactionTimeoutClientJspTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.settransactiontimeout.UserSetTransactionTimeoutClientJspTest -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] Running com.sun.ts.tests.jta.ee.usertransaction.settransactiontimeout.UserSetTransactionTimeoutClientServletTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! -- in com.sun.ts.tests.jta.ee.usertransaction.settransactiontimeout.UserSetTransactionTimeoutClientServletTest
+[ERROR] com.sun.ts.tests.jta.ee.usertransaction.settransactiontimeout.UserSetTransactionTimeoutClientServletTest -- Time elapsed: 0 s <<< ERROR!
+java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+	at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+	at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+		at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+		... 1 more
+	Caused by: java.lang.RuntimeException: Database initialization failed
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:80)
+		at org.wildfly.tck.transactions.DatabaseSetupExtension$DatabaseSetupObserver.setupDatabase(DatabaseSetupExtension.java:31)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:102)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:89)
+		at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:68)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:85)
+		at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:94)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:133)
+		at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:105)
+		at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeSuite(EventTestRunnerAdaptor.java:70)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.initializeAdaptor(JUnitJupiterTestClassLifecycleManager.java:40)
+		at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:25)
+		at org.jboss.arquillian.junit5.ArquillianExtension.beforeAll(ArquillianExtension.java:41)
+		... 1 more
+		Suppressed: java.lang.RuntimeException: Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.handleSuiteLevelFailure(JUnitJupiterTestClassLifecycleManager.java:62)
+			at org.jboss.arquillian.junit5.JUnitJupiterTestClassLifecycleManager.getManager(JUnitJupiterTestClassLifecycleManager.java:30)
+			at org.jboss.arquillian.junit5.ArquillianExtension.afterAll(ArquillianExtension.java:48)
+			... 1 more
+		Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+	Caused by: javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+		at java.naming/javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:485)
+		at java.naming/javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305)
+		at java.naming/javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342)
+		at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+		at org.wildfly.tck.transactions.DatabaseInitializer.initializeDatabase(DatabaseInitializer.java:34)
+		... 16 more
+Caused by: [CIRCULAR REFERENCE: java.lang.RuntimeException: Database initialization failed]
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   ClientEjblitejsfTest » Runtime Database initialization failed
+[ERROR]   ClientEjblitejspTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   ClientEjbliteservlet2Test » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   ClientEjbliteservletTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   ClientJspTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   ClientServletTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserBeginClientJspTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserBeginClientServletTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserCommitClientJspTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserCommitClientServletTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserGetStatusClientJspTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserGetStatusClientServletTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserRollbackClientJspTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserRollbackClientServletTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserSetRollbackOnlyClientJspTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserSetRollbackOnlyClientServletTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserSetTransactionTimeoutClientJspTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[ERROR]   UserSetTransactionTimeoutClientServletTest » Runtime Arquillian initialization has already been attempted, but failed. See previous exceptions for cause
+[INFO] 
+[ERROR] Tests run: 18, Failures: 0, Errors: 18, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.636 s
+[INFO] Finished at: 2026-06-04T11:59:56-04:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (transactions-tck) on project transactions-tck-runner: 
+[ERROR] 
+[ERROR] See /Users/aidenzhang/Documents/IBM/wildfly-tck-runners/jakarta-ee-tck-runners/transactions-tck/transactions-tck-runner/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

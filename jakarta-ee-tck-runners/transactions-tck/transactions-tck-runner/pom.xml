@@ -57,12 +57,6 @@
             <version>11.1.2</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>jakarta.tck.arquillian</groupId>
-            <artifactId>arquillian-protocol-appclient</artifactId>
-            <version>11.1.2</version>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.jboss.arquillian.junit5</groupId>
@@ -83,6 +77,12 @@
         <dependency>
             <groupId>org.jboss.arquillian.protocol</groupId>
             <artifactId>arquillian-protocol-servlet-jakarta</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.16.1.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -124,6 +124,20 @@
                                 <copy file="${basedir}/../../../../platform-tck/glassfish-runner/transactions-tck/transactions-tck-run/jakartaeetck/bin/ts.jte"
                                       tofile="${project.build.directory}/ts.jte"
                                       failonerror="true"/>
+                                
+                                <!-- Copy SQL files to target/sql for reference -->
+                                <copy todir="${project.build.directory}/sql" failonerror="true">
+                                    <fileset dir="${basedir}/../../../../platform-tck/glassfish-runner/transactions-tck/transactions-tck-run/sql">
+                                        <include name="**/*.sql"/>
+                                    </fileset>
+                                </copy>
+                                
+                                <!-- Copy SQL files to test-classes so they're on the classpath -->
+                                <copy todir="${project.build.directory}/test-classes/sql" failonerror="true">
+                                    <fileset dir="${basedir}/../../../../platform-tck/glassfish-runner/transactions-tck/transactions-tck-run/sql">
+                                        <include name="**/*.sql"/>
+                                    </fileset>
+                                </copy>
                                 
                                 <fileset id="jakarta-api-jars"
                                          dir="${jboss.home}${file.separator}modules/system/layers/base/jakarta/">
@@ -179,6 +193,11 @@
                             <classpathDependencyExcludes>
                                 <exclude>jakarta.transaction:jakarta.transaction-api</exclude>
                             </classpathDependencyExcludes>
+                            <excludes>
+                                <!-- Exclude appclient tests - WildFly doesn't support appclient container -->
+                                <!-- These tests are covered by equivalent Servlet and JSP tests -->
+                                <exclude>**/*ClientEjbTest.java</exclude>
+                            </excludes>
                         </configuration>
                     </execution>
                 </executions>
@@ -186,5 +205,42 @@
 
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>setup-database</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- Copy CLI script to standalone configuration directory -->
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-cli-scripts</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${jboss.home}/standalone/configuration</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${project.basedir}/src/test/resources</directory>
+                                            <includes>
+                                                <include>setup-database.cli</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
