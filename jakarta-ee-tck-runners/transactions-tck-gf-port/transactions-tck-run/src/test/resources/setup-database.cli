@@ -1,0 +1,11 @@
+# Setup database for Jakarta Transactions TCK
+# This script configures the Derby datasource for the TCK tests
+
+# Add Derby JDBC driver
+/subsystem=datasources/jdbc-driver=derby:add(driver-name=derby,driver-module-name=org.apache.derby,driver-xa-datasource-class-name=org.apache.derby.jdbc.EmbeddedXADataSource)
+
+# Add DB1 datasource
+data-source add --name=DB1 --jndi-name=java:jboss/datasources/DB1 --driver-name=derby --connection-url=jdbc:derby:memory:derbyDB;create=true --user-name=cts1 --password=cts1 --use-java-context=true --jta=true --enabled=true
+
+# Reload the server to apply changes
+:reload

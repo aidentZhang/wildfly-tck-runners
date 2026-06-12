@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright The WildFly Authors
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.wildfly.tck</groupId>
+        <artifactId>transactions-tck-gf-port-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>transactions-tck-gf-port-runner</artifactId>
+    <name>WildFly Jakarta Transactions TCK GF Port Runner</name>
+
+    <properties>
+        <version.org.testng>7.9.0</version.org.testng>
+        <wildfly.skip>false</wildfly.skip>
+        <ts.home>${basedir}/jakartaeetck</ts.home>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+            <version>${version.jakarta.transaction.api}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.arquillian</groupId>
+            <artifactId>wildfly-arquillian-container-managed</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>jakarta.tck</groupId>
+            <artifactId>transactions-tck</artifactId>
+            <version>12.0.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.tck.arquillian</groupId>
+            <artifactId>tck-porting-lib</artifactId>
+            <version>11.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.tck.arquillian</groupId>
+            <artifactId>arquillian-protocol-javatest</artifactId>
+            <version>11.1.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.tck.arquillian</groupId>
+            <artifactId>arquillian-protocol-appclient</artifactId>
+            <version>11.1.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.arquillian.junit5</groupId>
+            <artifactId>arquillian-junit5-container</artifactId>
+            <version>${version.org.jboss.arquillian}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-impl-javaee</artifactId>
+            <version>${version.org.jboss.shrinkwrap.descriptors}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.protocol</groupId>
+            <artifactId>arquillian-protocol-servlet-jakarta</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.16.1.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-transactions-tck</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeGroupIds>jakarta.tck</includeGroupIds>
+                            <includeArtifactIds>transactions-tck</includeArtifactIds>
+                            <stripVersion>true</stripVersion>
+                            <overWriteReleases>true</overWriteReleases>
+                            <outputDirectory>${project.build.directory}/dependency/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>configure-test-classpath</id>
+                        <phase>process-test-classes</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <exportAntProperties>true</exportAntProperties>
+                            <target>
+                                <!-- Copy ts.jte file -->
+                                <copy file="${basedir}/jakartaeetck/bin/ts.jte"
+                                      tofile="${project.build.directory}/ts.jte"
+                                      failonerror="true"/>
+                                
+                                <!-- Copy SQL files to target/sql for reference -->
+                                <copy todir="${project.build.directory}/sql" failonerror="true">
+                                    <fileset dir="${basedir}/sql">
+                                        <include name="**/*.sql"/>
+                                    </fileset>
+                                </copy>
+                                
+                                <!-- Copy SQL files to test-classes so they're on the classpath -->
+                                <copy todir="${project.build.directory}/test-classes/sql" failonerror="true">
+                                    <fileset dir="${basedir}/sql">
+                                        <include name="**/*.sql"/>
+                                    </fileset>
+                                </copy>
+                                
+                                <fileset id="jakarta-api-jars"
+                                         dir="${jboss.home}${file.separator}modules/system/layers/base/jakarta/">
+                                    <!-- Jakarta API's needed on the test class path -->
+                                    <include name="**/transaction/api/main/*.jar"/>
+                                </fileset>
+                                <pathconvert pathsep=","
+                                             property="jakarta.api.jars" refid="jakarta-api-jars"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-test</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>transactions-tck-javatest</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <argLine>
+                                ${addjdkexports}
+                                ${addjdkopens}
+                            </argLine>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:transactions-tck</dependency>
+                            </dependenciesToScan>
+                            <includes>
+                                <include>com/sun/ts/tests/jta/ee/transactional/ClientEjblitejspTest*.java</include>
+                                <include>com/sun/ts/tests/jta/ee/transactional/ClientEjbliteservletTest*.java</include>
+                                <include>com/sun/ts/tests/jta/ee/transactional/ClientEjbliteservlet2Test*.java</include>
+                                <include>com/sun/ts/tests/jta/ee/transactional/ClientEjblitejsfTest*.java</include>
+                                <include>com/sun/ts/tests/jta/ee/txpropagationtest/ClientServletTest*.java</include>
+                                <include>com/sun/ts/tests/jta/ee/txpropagationtest/ClientJspTest*.java</include>
+                                <include>com/sun/ts/tests/jta/ee/usertransaction/**/*JspTest*.java</include>
+                                <include>com/sun/ts/tests/jta/ee/usertransaction/**/*ServletTest*.java</include>
+                            </includes>
+                            <additionalClasspathElements>
+                                <!--suppress MavenModelInspection -->
+                                <additionalClasspathElement>${jakarta.api.jars}</additionalClasspathElement>
+                            </additionalClasspathElements>
+                            <classpathDependencyExcludes>
+                                <exclude>jakarta.transaction:jakarta.transaction-api</exclude>
+                            </classpathDependencyExcludes>
+                            <systemPropertyVariables>
+                                <junit.log.traceflag>true</junit.log.traceflag>
+                                <harness.log.traceflag>true</harness.log.traceflag>
+                                <cts.harness.debug>true</cts.harness.debug>
+                                <arquillian.xml>arquillian.xml</arquillian.xml>
+                            </systemPropertyVariables>
+                            <systemProperties>
+                                <gc.args/>
+                                <additional.vm.args>
+                                    ${failsafe.plugin.jdk17.args}
+                                </additional.vm.args>
+                            </systemProperties>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>setup-database</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- Copy CLI script to standalone configuration directory -->
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-cli-scripts</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${jboss.home}/standalone/configuration</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${project.basedir}/src/test/resources</directory>
+                                            <includes>
+                                                <include>setup-database.cli</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>appclient</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>transactions-tck-appclient</id>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                                <configuration>
+                                    <argLine>
+                                        ${addjdkexports}
+                                        ${addjdkopens}
+                                    </argLine>
+                                    <dependenciesToScan>
+                                        <dependency>jakarta.tck:transactions-tck</dependency>
+                                    </dependenciesToScan>
+                                    <includes>
+                                        <include>com/sun/ts/tests/jta/ee/txpropagationtest/ClientEjbTest.java</include>
+                                        <include>com/sun/ts/tests/jta/ee/usertransaction/**/*EjbTest*.java</include>
+                                    </includes>
+                                    <additionalClasspathElements>
+                                        <!--suppress MavenModelInspection -->
+                                        <additionalClasspathElement>${jakarta.api.jars}</additionalClasspathElement>
+                                    </additionalClasspathElements>
+                                    <classpathDependencyExcludes>
+                                        <exclude>jakarta.transaction:jakarta.transaction-api</exclude>
+                                    </classpathDependencyExcludes>
+                                    <systemPropertyVariables>
+                                        <ts.home>${ts.home}</ts.home>
+                                        <junit.log.traceflag>true</junit.log.traceflag>
+                                        <harness.log.traceflag>true</harness.log.traceflag>
+                                        <cts.harness.debug>true</cts.harness.debug>
+                                        <project.basedir>${project.basedir}</project.basedir>
+                                        <jboss.home>${jboss.home}</jboss.home>
+                                        <clientEnvp> </clientEnvp>
+                                        <arquillian.xml>appclient-arquillian.xml</arquillian.xml>
+                                    </systemPropertyVariables>
+                                    <systemProperties>
+                                        <gc.args/>
+                                        <additional.vm.args>
+                                            ${failsafe.plugin.jdk17.args}
+                                        </additional.vm.args>
+                                    </systemProperties>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
+
+<!-- Made with Bob -->
