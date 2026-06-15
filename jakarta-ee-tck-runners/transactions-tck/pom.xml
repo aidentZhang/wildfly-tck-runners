@@ -15,9 +15,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>transactions-tck-parent</artifactId>
-    <name>WildFly Jakarta Transactions TCK Parent</name>
-    <description>Runs the Jakarta Transactions TCK</description>
+    <artifactId>transactions-tck-gf-port-parent</artifactId>
+    <name>WildFly Jakarta Transactions TCK GF Port Parent</name>
+    <description>Runs the Jakarta Transactions TCK (GlassFish Port)</description>
     <packaging>pom</packaging>
 
     <properties>
@@ -26,14 +26,14 @@
 
     <profiles>
         <profile>
-            <id>standalone-transactions-tck</id>
+            <id>standalone-transactions-tck-gf-port</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
 
             <modules>
-                <module>transactions-tck-setup</module>
-                <module>transactions-tck-runner</module>
+                <module>transactions-tck-install</module>
+                <module>transactions-tck-run</module>
             </modules>
         </profile>
     </profiles>

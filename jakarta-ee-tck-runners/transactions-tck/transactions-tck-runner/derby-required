@@ -1,2 +1,0 @@
-# This file activates the setup-derby-module profile in the parent pom.xml
-# The profile will install Derby JDBC driver as a WildFly module
