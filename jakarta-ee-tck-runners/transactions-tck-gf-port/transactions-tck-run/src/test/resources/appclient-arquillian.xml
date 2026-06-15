@@ -38,6 +38,7 @@
             <property name="clientDir">${project.basedir}</property>
             <property name="workDir">target</property>
             <property name="tsJteFile">target/ts.jte</property>
+            <property name="tsSqlStmtFile">target/sql/derby/derby.dml.sql</property>
             <property name="trace">true</property>
             <property name="clientTimeout">20000</property>
         </protocol>
