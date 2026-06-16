@@ -1,6 +1,0 @@
-Test Results Summary:
----------------------
-Completed: 
-Failures:  
-Errors:    
-Skipped:   
