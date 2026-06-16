@@ -1,0 +1,2 @@
+This file triggers the setup-derby-module profile in the parent POM.
+The profile copies the Derby JDBC driver module configuration to the WildFly installation.
