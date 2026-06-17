@@ -21,6 +21,8 @@
     <properties>
         <wildfly.skip>false</wildfly.skip>
         <ts.home>${basedir}/jakartaeetck</ts.home>
+        <!-- By default, download TCK. Set to true when using -P!download-tck -->
+        <skip.download.tck>false</skip.download.tck>
     </properties>
 
     <dependencies>
@@ -260,10 +262,32 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
+                            <skip>${skip.download.tck}</skip>
                             <includeGroupIds>jakarta.tck</includeGroupIds>
                             <includeArtifactIds>transactions-tck</includeArtifactIds>
                             <stripVersion>true</stripVersion>
                             <outputDirectory>${project.build.directory}/dependency/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-certificates</id>
+                        <phase>generate-test-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${skip.download.tck}</skip>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>jakarta.tck</groupId>
+                                    <artifactId>transactions-tck</artifactId>
+                                    <version>12.0.0-SNAPSHOT</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${ts.home}/bin</outputDirectory>
+                                    <includes>certificates/**</includes>
+                                </artifactItem>
+                            </artifactItems>
                         </configuration>
                     </execution>
                 </executions>
@@ -356,6 +380,17 @@
     </build>
 
     <profiles>
+        <!-- Profile to download TCK (active by default) -->
+        <profile>
+            <id>download-tck</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <skip.download.tck>false</skip.download.tck>
+            </properties>
+        </profile>
+
         <!-- AppClient profile for appclient tests -->
         <profile>
             <id>appclient</id>
