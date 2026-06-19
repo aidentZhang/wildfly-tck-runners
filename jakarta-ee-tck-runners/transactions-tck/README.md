@@ -25,49 +25,7 @@ The Transactions TCK includes **195 tests** across two deployment modes:
 - **UserTransaction Tests**: Tests for programmatic transaction management via `UserTransaction` API
 - **XA Transaction Tests**: Tests for distributed transaction coordination
 
-## Architecture
 
-### Module Structure
-
-```
-transactions-tck/
-├── pom.xml                          # Parent POM
-├── transactions-tck-setup/          # TCK artifact download and unpacking
-│   └── pom.xml
-└── transactions-tck-runner/         # Main test execution module
-    ├── pom.xml
-    ├── derby-required               # Marker file indicating Derby dependency
-    ├── META-INF/
-    │   └── application-client.xml   # AppClient deployment descriptor
-    ├── jakartaeetck/
-    │   └── bin/
-    │       ├── ts.jte               # JavaTest environment configuration
-    │       ├── README.md            # TCK binary directory documentation
-    │       └── certificates/        # SSL certificates for AppClient tests
-    ├── sql/
-    │   └── derby/
-    │       ├── derby.ddl.sql        # Database schema definition
-    │       ├── derby.dml.sql        # Named SQL statements
-    │       ├── password.txt         # Database password file
-    │       └── README.md            # SQL files documentation
-    └── src/
-        ├── main/java/               # Arquillian extensions and utilities
-        │   └── org/jboss/wildfly/tck/transactions/
-        │       ├── AppClientInitialContextFactory.java
-        │       ├── Validate.java
-        │       ├── WildFlyExceptionTransformer.java
-        │       ├── WildFlyExtension.java
-        │       └── WildFlyTestArchiveProcessor.java
-        ├── main/resources/
-        │   └── META-INF/services/
-        │       └── org.jboss.arquillian.core.spi.LoadableExtension
-        ├── test/java/               # Database setup utilities
-        │   └── org/jboss/wildfly/tck/transactions/
-        │       └── DbSetup.java
-        └── test/resources/          # Test configuration files
-            ├── arquillian.xml       # Arquillian container configuration
-            ├── appclient-arquillian.xml  # AppClient-specific configuration
-            └── setup-database.cli   # WildFly CLI script for datasource setup
 ```
 
 ## Prerequisites

@@ -1,10 +1,6 @@
 # Jakarta Transactions TCK Configuration for WildFly
 # Minimal configuration - only essential properties for running 195 transaction tests
 
-# Work/Report Directories (required by TCK harness)
-work.dir=/home/jenkins/agent/workspace/jakartaee-tck_10.0.x/JTWork
-report.dir=/home/jenkins/agent/workspace/jakartaee-tck_10.0.x/JTReport
-
 # Derby Database Configuration (required for transaction tests)
 derby.server=localhost
 derby.port=1527
@@ -40,13 +36,8 @@ JTA_Tab2_Select=select * from JTA_Tab2
 JTA_Tab1_Select1=select KEY_ID,  COF_NAME, PRICE FROM JTA_Tab1 where KEY_ID = ?
 JTA_Tab2_Select1=select KEY_ID,  CHOC_NAME, PRICE FROM JTA_Tab2 where KEY_ID = ?
 
-# Transaction Synchronization Registry (required by transaction tests)
-tsrJndiName=java:comp/TransactionSynchronizationRegistry
-
 # Web Server Configuration (required by servlet/JSP tests)
 webServerHost=localhost
 webServerPort=8080
-webServerHost.2=localhost
-webServerPort.2=8002
 
 # Made with Bob

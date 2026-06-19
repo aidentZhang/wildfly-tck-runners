@@ -252,6 +252,45 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>copy-derby-jars</id>
+                        <phase>generate-test-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.derby</groupId>
+                                    <artifactId>derby</artifactId>
+                                    <version>10.16.1.1</version>
+                                    <outputDirectory>${jboss.home}/modules/org/apache/derby/main</outputDirectory>
+                                    <destFileName>derby.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.derby</groupId>
+                                    <artifactId>derbyclient</artifactId>
+                                    <version>10.16.1.1</version>
+                                    <outputDirectory>${jboss.home}/modules/org/apache/derby/main</outputDirectory>
+                                    <destFileName>derbyclient.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.derby</groupId>
+                                    <artifactId>derbyshared</artifactId>
+                                    <version>10.16.1.1</version>
+                                    <outputDirectory>${jboss.home}/modules/org/apache/derby/main</outputDirectory>
+                                    <destFileName>derbyshared.jar</destFileName>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.derby</groupId>
+                                    <artifactId>derbytools</artifactId>
+                                    <version>10.16.1.1</version>
+                                    <outputDirectory>${jboss.home}/modules/org/apache/derby/main</outputDirectory>
+                                    <destFileName>derbytools.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>copy-transactions-tck</id>
                         <phase>process-resources</phase>
                         <goals>
@@ -294,6 +333,20 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
+                    <execution>
+                        <id>copy-derby-module-xml</id>
+                        <phase>generate-test-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <copy file="${basedir}/../../modules/derby-module.xml"
+                                      tofile="${jboss.home}/modules/org/apache/derby/main/module.xml"
+                                      failonerror="true"/>
+                            </target>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>copy-ts-jte-to-target</id>
                         <phase>process-test-classes</phase>
