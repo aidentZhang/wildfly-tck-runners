@@ -1,8 +1,3 @@
-#
-# Copyright The WildFly Authors
-# SPDX-License-Identifier: Apache-2.0
-#
-
 # Jakarta Transactions TCK Configuration for WildFly
 # Minimal configuration - only essential properties for running 195 transaction tests
 

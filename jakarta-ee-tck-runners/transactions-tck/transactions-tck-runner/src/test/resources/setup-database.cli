@@ -1,8 +1,3 @@
-#
-# Copyright The WildFly Authors
-# SPDX-License-Identifier: Apache-2.0
-#
-
 # Setup database for Jakarta Transactions TCK
 # This script configures the Derby datasource for the TCK tests
 

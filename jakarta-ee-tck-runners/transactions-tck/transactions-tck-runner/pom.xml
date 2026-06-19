@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ Copyright The WildFly Authors
-  ~ SPDX-License-Identifier: Apache-2.0
-  -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -187,49 +183,49 @@
                 </executions>
             </plugin>
 
-            <!-- Copy SQL files and ts.jte -->
+            <!-- Unpack SQL files from TCK artifact -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-sql-files</id>
+                        <phase>generate-test-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeGroupIds>jakarta.tck</includeGroupIds>
+                            <includeArtifactIds>transactions-tck</includeArtifactIds>
+                            <outputDirectory>${project.build.directory}/test-classes/sql</outputDirectory>
+                            <includes>derby/**/*.sql,derby/**/*.txt</includes>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-sql-files-for-appclient</id>
+                        <phase>generate-test-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeGroupIds>jakarta.tck</includeGroupIds>
+                            <includeArtifactIds>transactions-tck</includeArtifactIds>
+                            <outputDirectory>${project.build.directory}/sql</outputDirectory>
+                            <includes>derby/**/*.sql,derby/**/*.txt</includes>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Copy ts.jte and other resources -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
-                    <execution>
-                        <id>copy-sql-files</id>
-                        <phase>generate-test-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/test-classes/sql/derby</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>sql/derby</directory>
-                                    <includes>
-                                        <include>*.sql</include>
-                                        <include>*.txt</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-sql-files-for-appclient</id>
-                        <phase>generate-test-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/sql/derby</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>sql/derby</directory>
-                                    <includes>
-                                        <include>*.sql</include>
-                                        <include>*.txt</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
                     <execution>
                         <id>copy-ts-jte</id>
                         <phase>generate-test-resources</phase>
