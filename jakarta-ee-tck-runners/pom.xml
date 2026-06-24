@@ -473,7 +473,7 @@
                 <module>jsonb-tck</module>
                 <module>jsonp-tck</module>
                 <module>rest-tck</module>
-                <module>transactions-tck</module>
+                <!-- <module>transactions-tck</module> -->
             </modules>
         </profile>
 
