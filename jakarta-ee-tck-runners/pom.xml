@@ -102,6 +102,7 @@
         <version.jakarta.ejb.short>4.0</version.jakarta.ejb.short>
         <version.jakarta.ejb.api>${version.jakarta.ejb.short}.0</version.jakarta.ejb.api>
 
+        
         <version.jakarta.json.short>2.1</version.jakarta.json.short>
         <version.jakarta.json.tck>${version.jakarta.json.short}.1</version.jakarta.json.tck>
 
@@ -113,6 +114,9 @@
 
         <version.jakarta.servlet.short>6.1</version.jakarta.servlet.short>
         <version.jakarta.servlet.api>${version.jakarta.servlet.short}.0</version.jakarta.servlet.api>
+
+        <version.jakarta.transaction.short>2.0.1</version.jakarta.transaction.short>
+        <version.jakarta.transaction.api>${version.jakarta.transaction.short}</version.jakarta.transaction.api>
 
         <version.jakarta.ws.rs.short>4.0</version.jakarta.ws.rs.short>
 
@@ -469,6 +473,7 @@
                 <module>jsonb-tck</module>
                 <module>jsonp-tck</module>
                 <module>rest-tck</module>
+                <!-- <module>transactions-tck</module> -->
             </modules>
         </profile>
 
